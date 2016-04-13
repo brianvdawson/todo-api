@@ -18,7 +18,8 @@ node {
 
     stage 'Test'
     sleep(20)
-    error 'Cucumber test failed'
+    //error 'Cucumber test failed'
+
     stage 'Package and Publish'
     stage 'Approve'
 

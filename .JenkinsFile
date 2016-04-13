@@ -1,0 +1,29 @@
+node {
+    stage 'Checkout/Merge to Master'
+    node {
+        sleep(5)
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'c60c42ae-0e52-4bea-a11b-cf2efb2439aa', url: 'https://github.com/brianvdawson/todo-api']]])
+    }
+
+    stage 'Build & Validate'
+    node{
+        sleep(30)
+    }
+    stage 'Deep Quality Scan'
+    sleep(60)
+    error 'Cyclical complexity exceeds threshold'
+
+    stage 'Deploy to QA'
+    sleep(10)
+
+    stage 'Test'
+    sleep(20)
+    error 'Cucumber test failed'
+    stage 'Package and Publish'
+    stage 'Approve'
+
+    input message: 'Do you want to deploy?'
+
+    stage 'Deploy to Prod'
+    stage 'Roll Prod Server'
+}

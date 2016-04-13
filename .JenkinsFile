@@ -23,7 +23,7 @@ node {
     stage 'Package and Publish'
     stage 'Approve'
 
-    input message: 'Do you want to deploy?', ok: deploy
+    input message: 'Approve for Production?', ok: "Deploy to Prod-Blue"
 
     stage 'Deploy to Prod'
     stage 'Roll Prod Server'

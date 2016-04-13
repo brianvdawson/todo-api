@@ -1,4 +1,5 @@
 stage "build"
+node
 
 stage "unit test"
 
